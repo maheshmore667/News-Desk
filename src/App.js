@@ -15,25 +15,25 @@ export default class App extends Component {
         <Router>
           <Navbar/>
           <Route exact path="/">
-            <NewsSection pageSize={5} country="in" category="general"/>
+            <NewsSection pageSize={15} country="in" category="general"/>
           </Route>
           <Route exact path="/entertainment">
-            <NewsSection pageSize={5} country="in" category="entertainment"/>
+            <NewsSection pageSize={15} country="in" category="entertainment"/>
           </Route>
           <Route exact path="/general">
-            <NewsSection pageSize={5} country="in" category="general"/>
+            <NewsSection pageSize={15} country="in" category="general"/>
           </Route>
           <Route exact path="/health">
-            <NewsSection pageSize={5} country="in" category="health"/>
+            <NewsSection pageSize={15} country="in" category="health"/>
           </Route>
           <Route exact path="/science">
-            <NewsSection pageSize={5} country="in" category="science"/>
+            <NewsSection pageSize={15} country="in" category="science"/>
           </Route>
           <Route exact path="/sports">
-            <NewsSection pageSize={5} country="in" category="sports"/>
+            <NewsSection pageSize={15} country="in" category="sports"/>
           </Route>
           <Route exact path="/technology">
-            <NewsSection pageSize={5} country="in" category="technology"/>
+            <NewsSection pageSize={15} country="in" category="technology"/>
           </Route>
           
          
