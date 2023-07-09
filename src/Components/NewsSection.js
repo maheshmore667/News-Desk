@@ -25,12 +25,14 @@ export default class NewsSection extends Component {
     }
   }
 
-   componentDidMount() {
-    this.setState({
-      loading : true,
-      pageNumber : 1
-    })
-   this.fetchData();
+   async componentDidMount() {
+    let url =`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=89f8a48acc1a4193aeab8d5584ea7352&page=${this.state?.pageNumber}&pagesize=${this.props?.pageSize}`;
+    this.setState({  loading : true});
+    let data = await fetch(url);
+    let parsedData = await data.json()
+    this.setState({articles : parsedData?.articles,
+    totalResults : parsedData?.totalResults,
+    loading : false})
   }
 
   fetchData = async() =>{
@@ -38,6 +40,7 @@ export default class NewsSection extends Component {
       alert("Enough news for the day !!");
     } else {
       let url =`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=89f8a48acc1a4193aeab8d5584ea7352&page=${this.state?.pageNumber}&pagesize=${this.props?.pageSize}`;
+      this.setState({  loading : true});
       let data = await fetch(url);
       let parsedData = await data.json()
       this.setState({articles : parsedData?.articles,
@@ -48,12 +51,13 @@ export default class NewsSection extends Component {
 
   handleNextPage = () =>{
     this.setState({ pageNumber : this.state.pageNumber + 1})
+   
     this.fetchData();
   }
 
   handlePreviousPage = () =>{
-    console.log("prev");
     this.setState({pageNumber : this.state.pageNumber - 1 });
+    
     this.fetchData();
   }
 
