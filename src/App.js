@@ -10,6 +10,8 @@ export default class App extends Component {
     progress : 10
   }
 
+  apiKey= process.env.REACT_APP_NEWS_API_KEY;
+
   setProgress =(progress) =>{
     this.setState({
       progress : progress
@@ -27,25 +29,25 @@ export default class App extends Component {
           height={4}
           />
           <Route exact path="/">
-            <NewsSection setProgress ={this.setProgress} pageSize={15} country="in" category="general" />
+            <NewsSection setProgress ={this.setProgress} apiKey={process.env.REACT_APP_NEWS_API_KEY} pageSize={15} country="in" category="general" />
           </Route>
           <Route exact path="/entertainment">
-            <NewsSection setProgress ={this.setProgress} pageSize={15} country="in" category="entertainment" />
+            <NewsSection setProgress ={this.setProgress} apiKey={this.apiKey} pageSize={15} country="in" category="entertainment" />
           </Route>
           <Route exact path="/general">
-            <NewsSection setProgress ={this.setProgress} pageSize={15} country="in" category="general" />
+            <NewsSection setProgress ={this.setProgress} apiKey={this.apiKey} pageSize={15} country="in" category="general" />
           </Route>
           <Route exact path="/health">
-            <NewsSection setProgress ={this.setProgress} pageSize={15} country="in" category="health" />
+            <NewsSection setProgress ={this.setProgress} apiKey={this.apiKey} pageSize={15} country="in" category="health" />
           </Route>
           <Route exact path="/science">
-            <NewsSection setProgress ={this.setProgress} pageSize={15} country="in" category="science" />
+            <NewsSection setProgress ={this.setProgress} apiKey={this.apiKey} pageSize={15} country="in" category="science" />
           </Route>
           <Route exact path="/sports">
-            <NewsSection setProgress ={this.setProgress} pageSize={15} country="in" category="sports" />
+            <NewsSection setProgress ={this.setProgress} apiKey={this.apiKey} pageSize={15} country="in" category="sports" />
           </Route>
           <Route exact path="/technology">
-            <NewsSection setProgress ={this.setProgress} pageSize={15} country="in" category="technology" />
+            <NewsSection setProgress ={this.setProgress} apiKey={this.apiKey} pageSize={15} country="in" category="technology" />
           </Route>
         </Router>
       </div>
