@@ -44,15 +44,19 @@ export default class NewsSection extends Component {
     if (this.state.pageNumber > Math.ceil(this.state.totalResults / 10)) {
       alert("Enough news for the day !!");
     } else {
+      this.props.setProgress(20);
       let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=89f8a48acc1a4193aeab8d5584ea7352&page=${this.state?.pageNumber}&pagesize=${this.props?.pageSize}`;
       this.setState({ loading: true });
       let data = await fetch(url);
+      this.props.setProgress(40);
       let parsedData = await data.json();
+      this.props.setProgress(50);
       this.setState({
         articles:  parsedData?.articles,
         totalResults: parsedData?.totalResults,
         loading: false,
       });
+      this.props.setProgress(100);
     }
   };
 
