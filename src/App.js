@@ -35,8 +35,6 @@ export default class App extends Component {
           <Route exact path="/technology">
             <NewsSection pageSize={15} country="in" category="technology"/>
           </Route>
-          
-         
         </Router>
        
       </div>
