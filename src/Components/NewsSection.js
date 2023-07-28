@@ -55,13 +55,14 @@ export default class NewsSection extends Component {
         articles:  parsedData?.articles,
         totalResults: parsedData?.totalResults,
         loading: false,
+        pageNumber : this.state.pageNumber+1
       });
       this.props.setProgress(100);
     }
   };
 
   fetchMoreData = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state?.pageNumber}&pagesize=${this.props?.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state?.pageNumber+1}&pagesize=${this.props?.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
